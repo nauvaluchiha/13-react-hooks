@@ -69,12 +69,9 @@ const ProductTable: React.FC<Product> = ({ productData, handleDelete }) => {
   return (
     <section style={{ marginBottom: "150px" }}>
       <div className="px-0 px-md-5" style={{ marginTop: "220px" }}>
-        <h2 className="text-center px-2 fs-4">
-          Data yang bisa dimodifikasi hanyalah data yang baru ditambahkan.
-        </h2>
-        <h2 className="text-center px-2 fs-4">
-          Data yang diambil dari fetch API tidak bisa dimodifikasi.
-        </h2>
+       <h6 className="text-center px-4 mt-2">
+        API: https://mocki.io/v1/98c2bfc1-0f1e-4ab7-946d-b9ebd4bd416f
+      </h6>
         <Grid
           data={data}
           columns={productTitle}
@@ -85,9 +82,6 @@ const ProductTable: React.FC<Product> = ({ productData, handleDelete }) => {
           }}
         />
       </div>
-      <h6 className="text-center px-4 mt-2">
-        API: https://mocki.io/v1/98c2bfc1-0f1e-4ab7-946d-b9ebd4bd416f
-      </h6>
     </section>
   );
 };
