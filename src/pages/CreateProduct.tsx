@@ -29,7 +29,7 @@ export const CreateProduct = () => {
     if (!ignore) {
       data.then((data) => setProductData(data));
       console.log(
-        "Munculnya error [Grid.js] [ERROR]: Duplicate plugin ID disebabkan oleh rendering yg terjadi dari useEffect ketika melakukan fetch data. Ini merupakan bug pada library tersebut yg meduplikasi plugin meski sudah dipakai. Bug ini masih belum difix sejak 8 bulan yg lalu."
+        "Munculnya error [Grid.js] [ERROR]: Duplicate plugin ID disebabkan oleh rendering yg terjadi saat data diperbarui. Ini merupakan bug pada library tersebut yg meduplikasi plugin meski sudah terpakai. Bug ini masih belum difix sejak 8 bulan yg lalu dan dari demo library tersebut juga ternyata bisa terlihat."
       );
     }
     return () => {
