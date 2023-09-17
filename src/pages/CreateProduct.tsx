@@ -37,12 +37,13 @@ export const CreateProduct = () => {
     };
   }, []);
   
-  const handleOnSubmit = (data: ProductData) => {
-    const {name, category, image, freshness, desc, price} = data;
+const handleOnSubmit = (data: ProductData) => {
+    const { name, category, image, freshness, desc, price } = data;
     const lastIndex = productData.length - 1;
-    const lastId = productData[lastIndex].id;
+    let lastId = 0;
+    if (productData.length !== 0) lastId = Number(productData[lastIndex].id);
     const newData: ProductData = {
-      id: lastId + 1,
+      id: String(Number(lastId + 1)),
       name: name,
       category: category,
       image: image,
