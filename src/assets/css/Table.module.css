@@ -1,0 +1,4 @@
+table tr td:last-child {
+  /* Atur gaya CSS untuk kolom terakhir di setiap baris */
+  background-color: #64a2ff;
+}
