@@ -39,8 +39,10 @@ export const CreateProduct = () => {
   
   const handleOnSubmit = (data: ProductData) => {
     const {name, category, image, freshness, desc, price} = data;
+    const lastIndex = productData.length - 1;
+    const lastId = productData[lastIndex].id;
     const newData: ProductData = {
-      id: String(productData.length + 1),
+      id: lastId + 1,
       name: name,
       category: category,
       image: image,
@@ -49,7 +51,7 @@ export const CreateProduct = () => {
       price: Number(price),
     };
     setProductData(productData.concat(newData));
-  };  
+  };
 
   const handleDelete = (id: string) => {
     const newData = productData.filter((item) => `button-${item.id}` !== id);
