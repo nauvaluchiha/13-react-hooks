@@ -16,7 +16,7 @@ interface ProductData {
   price: number | string;
 }
 
-export const CreateProduct = () => {
+const CreateProduct = () => {
   const data = useFetch("/v1/98c2bfc1-0f1e-4ab7-946d-b9ebd4bd416f");
   const [productData, setProductData] = useState<ProductData[]>([]);
 
@@ -36,8 +36,8 @@ export const CreateProduct = () => {
       ignore = true;
     };
   }, []);
-  
-const handleOnSubmit = (data: ProductData) => {
+
+  const handleOnSubmit = (data: ProductData) => {
     const { name, category, image, freshness, desc, price } = data;
     const lastIndex = productData.length - 1;
     let lastId = 0;
@@ -69,3 +69,5 @@ const handleOnSubmit = (data: ProductData) => {
     </main>
   );
 };
+
+export default CreateProduct;
