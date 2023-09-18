@@ -82,6 +82,7 @@ const ProductTable: React.FC<Product> = ({ productData, handleDelete }) => {
           }}
         />
       </div>
+      <h6 className="text-center px-4 mt-2">Made by <span className="text-info">Naufal Nasrullah 🗿</span></h6>
     </section>
   );
 };
