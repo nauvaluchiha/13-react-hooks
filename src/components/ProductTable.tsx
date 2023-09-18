@@ -1,7 +1,7 @@
 import { Grid } from "gridjs-react";
 import "gridjs/dist/theme/mermaid.css";
 import "@/assets/css/Table.module.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Product = {
   productData: ProductData[];
@@ -31,6 +31,7 @@ const productTitle = [
 
 const ProductTable: React.FC<Product> = ({ productData, handleDelete }) => {
   const [data, setData] = useState<unknown>([]);
+  const [btnTotal, setBtnTotal] = useState(0);
 
   useEffect(() => {
     const eachData = productData.map((item) => {
@@ -39,7 +40,7 @@ const ProductTable: React.FC<Product> = ({ productData, handleDelete }) => {
       button.innerHTML = "Delete";
       button.id = `button-${item.id}`;
       button.type = "button";
-
+      setBtnTotal((prev) => prev + 1);
       return [
         item.id,
         item.name,
@@ -56,10 +57,17 @@ const ProductTable: React.FC<Product> = ({ productData, handleDelete }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      const button = document.querySelectorAll("button");
-      button.forEach((btn) => {
-        btn.addEventListener("click", (e: MouseEvent) => {
-          const targetId: string | null = e.target ? (e.target as HTMLElement).id : null;
+      const buttons = [];
+      for (let i = 1; i <= btnTotal; i++) {
+        const buttonId = `button-${i}`;
+        const button = document.getElementById(buttonId);
+        if (button) {
+          buttons.push(button);
+        }
+      }
+      buttons.forEach((button) => {
+        button.addEventListener("click", (e: MouseEvent) => {
+          const targetId = e.target ? (e.target as HTMLElement).id : null;
           handleDelete(targetId!);
         });
       });
@@ -69,9 +77,9 @@ const ProductTable: React.FC<Product> = ({ productData, handleDelete }) => {
   return (
     <section style={{ marginBottom: "150px" }}>
       <div className="px-0 px-md-5" style={{ marginTop: "220px" }}>
-       <h6 className="text-center px-4 mt-2">
-        API: https://mocki.io/v1/98c2bfc1-0f1e-4ab7-946d-b9ebd4bd416f
-      </h6>
+        <h6 className="text-center px-4 mt-2">
+          API: https://mocki.io/v1/98c2bfc1-0f1e-4ab7-946d-b9ebd4bd416f
+        </h6>
         <Grid
           data={data}
           columns={productTitle}
@@ -82,7 +90,9 @@ const ProductTable: React.FC<Product> = ({ productData, handleDelete }) => {
           }}
         />
       </div>
-      <h6 className="text-center px-4 mt-2">Made by <span className="text-info">Naufal Nasrullah 🗿</span></h6>
+      <h6 className="text-center px-4 mt-2">
+        Made by <span className="text-info">Naufal Nasrullah 🗿</span>
+      </h6>
     </section>
   );
 };
