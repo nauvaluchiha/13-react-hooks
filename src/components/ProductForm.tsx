@@ -39,7 +39,6 @@ const ProductForm = ({ handleOnSubmit }: { handleOnSubmit: (inputValue: ProductD
         form.classList.add("was-validated");
       } else {
         setFormSuccess(true);
-        console.log(inputValue);
         handleOnSubmit(inputValue);
       }
     });
